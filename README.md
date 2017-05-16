@@ -48,8 +48,35 @@ game.flexcale.onResize.add(function (scale) {
 });
 ```
 
+# API
+Assuming you have `flexcale = game.plugins.add(Phaser.Plugin.Flexcale)`...
+
+```js
+// The main method that handles everything. Invoke it whenever you want to refresh things.
+flexcale.resize()
+
+// The scale that content must have to fit within the `minWidth` and `minHeight`.
+flexcale.scale
+
+// Phaser.Signal that is dispatched when resize() is fired and provides `scale` to the listener.
+flexcale.onResize
+
+// The available options.
+flexcale.options = {
+    resolution: 1,
+    centering: true,
+    minWidth: 480,
+    minHeight: 720,
+    maxWidth: null,
+    maxHeight: null
+};
+
+// Configures the `options`. If silent is not set, resize() will be called. `object` must contain the options you want to set.
+flexcale.setOptions(object, silent)
+```
+
 # Warning!
-Currently flexcale needs to modify the CSS of the game's parent container in order to work correctly. It sets its `width` and `height` CSS properties to `100%` and modifies its `margin-left` and `margin-right` when needed in order to center the game.
+Currently, flexcale needs to modify the CSS of the game's parent container in order to work correctly. It sets its `width` and `height` CSS properties to `100%` and modifies its `margin-left` and `margin-right` when needed in order to center the game.
 For an _actual_ container, wrap the game in another `<div>`. This is due to Phaser manipulating the game canvas' `margin` properties, making it impossible to change them. Thus, the parent container must be used.
 
 **This may be fixed if there's a solution!**
