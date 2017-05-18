@@ -10,7 +10,6 @@ function preload() {
 
 	game.flexcale = game.plugins.add(Phaser.Plugin.Flexcale);
 	game.flexcale.setOptions({
-		resolution: 1,
 		minWidth: 480,
 		minHeight: 720
 	});

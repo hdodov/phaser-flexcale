@@ -4,6 +4,7 @@ Phaser.Plugin.Flexcale = function (game, parent) {
 	this.options = {
 		resolution: 1,
 		centering: true,
+		upscaling: true,
 		minWidth: 480,
 		minHeight: 720,
 		maxWidth: null,
@@ -30,7 +31,7 @@ Phaser.Plugin.Flexcale = function (game, parent) {
 		this.y *= that.options.resolution;
 	};
 };
- 
+
 Phaser.Plugin.Flexcale.prototype = Object.create(Phaser.Plugin.prototype);
 Phaser.Plugin.Flexcale.prototype.constructor = Phaser.Plugin.SamplePlugin;
 
@@ -52,15 +53,16 @@ Phaser.Plugin.Flexcale.prototype.resize = function () {
 		hRatio = (h / o.minHeight); // portion of the minimal height available
 
 	this.scale = (wRatio < hRatio) ? wRatio : hRatio;
+	if (this.scale > 1 && !o.upscaling) {
+		this.scale = 1;
+	}
 
 	if (typeof o.maxWidth === "number") {
 		w = Math.min(w, o.maxWidth * this.scale);
-		w = Math.min(w, o.maxWidth);
 	}
 
 	if (typeof o.maxHeight === "number") {
 		h = Math.min(h, o.maxHeight * this.scale);
-		h = Math.min(h, o.maxHeight);
 	}
 
 	w *= o.resolution;
