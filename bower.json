@@ -1,0 +1,21 @@
+{
+  "name": "phaser-flexcale",
+  "description": "Phaser plugin for responsive games with no black bars",
+  "main": "dist/phaser-flexcale.js",
+  "authors": [
+    "Hristiyan Dodov"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Phaser",
+    "flexscale"
+  ],
+  "homepage": "https://github.com/hdodov/phaser-flexcale#readme",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ]
+}
